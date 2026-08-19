@@ -39,3 +39,6 @@ coverage/
 
 # Misc
 *.tsbuildinfo
+
+# Subdirectory (separate repo)
+AIROVE-W/
