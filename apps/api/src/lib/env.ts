@@ -1,3 +1,5 @@
+import process from 'node:process';
+
 function getEnv(key: string): string {
   const value = process.env[key];
   if (!value) {
