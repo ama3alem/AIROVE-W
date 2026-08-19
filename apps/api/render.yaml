@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: airove-api
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build --filter=@airove/api
+    startCommand: npm run start --filter=@airove/api
+    healthCheckPath: /api/health/live
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: BETTER_AUTH_SECRET
+        generateValue: true
+      - key: BETTER_AUTH_URL
+        value: https://api.airove.com
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET_NAME
+        value: airove-production
+      - key: CORS_ORIGINS
+        value: https://airove.com,https://www.airove.com
+      - key: LOG_LEVEL
+        value: info

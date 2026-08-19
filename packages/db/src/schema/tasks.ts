@@ -1,0 +1,26 @@
+import { pgTable, varchar, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+
+export const tasks = pgTable('tasks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  caseId: uuid('case_id'),
+  baggageId: uuid('baggage_id'),
+  title: varchar('title', { length: 255 }).notNull(),
+  description: text('description'),
+  taskType: varchar('task_type', { length: 50 }).notNull(),
+  priority: varchar('priority', { length: 20 }).notNull().default('medium'),
+  status: varchar('status', { length: 30 }).notNull().default('pending'),
+  assignedTo: uuid('assigned_to'),
+  assignedOrganizationId: uuid('assigned_organization_id'),
+  assignedAt: timestamp('assigned_at', { withTimezone: true }),
+  startedAt: timestamp('started_at', { withTimezone: true }),
+  dueAt: timestamp('due_at', { withTimezone: true }),
+  completedAt: timestamp('completed_at', { withTimezone: true }),
+  completedBy: uuid('completed_by'),
+  blockedAt: timestamp('blocked_at', { withTimezone: true }),
+  blockedReason: text('blocked_reason'),
+  result: text('result'),
+  metadata: text('metadata'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});

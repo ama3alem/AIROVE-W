@@ -1,0 +1,33 @@
+import { pgTable, varchar, text, timestamp, uuid, integer, index, uniqueIndex } from 'drizzle-orm/pg-core';
+
+export const baggageEvents = pgTable('baggage_events', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  baggageId: uuid('baggage_id').notNull(),
+  flightId: uuid('flight_id'),
+  eventType: varchar('event_type', { length: 50 }).notNull(),
+  eventSource: varchar('event_source', { length: 100 }),
+  actorType: varchar('actor_type', { length: 50 }),
+  actorId: varchar('actor_id', { length: 100 }),
+  location: varchar('location', { length: 255 }),
+  airportCode: varchar('airport_code', { length: 3 }),
+  terminal: varchar('terminal', { length: 20 }),
+  handler: varchar('handler', { length: 100 }),
+  status: varchar('status', { length: 30 }).notNull().default('processed'),
+  sequenceNumber: integer('sequence_number'),
+  correctionOf: uuid('correction_of'),
+  eventHash: varchar('event_hash', { length: 128 }),
+  previousEventHash: varchar('previous_event_hash', { length: 128 }),
+  schemaVersion: varchar('schema_version', { length: 20 }).notNull().default('1.0'),
+  idempotencyKey: varchar('idempotency_key', { length: 255 }),
+  rawPayload: text('raw_payload'),
+  metadata: text('metadata'),
+  occurredAt: timestamp('occurred_at', { withTimezone: true }).notNull(),
+  processedAt: timestamp('processed_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({
+  baggageIdx: index('idx_baggage_events_baggage').on(t.baggageId),
+  sequenceIdx: index('idx_baggage_events_sequence').on(t.baggageId, t.sequenceNumber),
+  typeIdx: index('idx_baggage_events_type').on(t.eventType),
+  idempotencyIdx: uniqueIndex('idx_baggage_events_idempotency').on(t.orgId, t.idempotencyKey),
+}));

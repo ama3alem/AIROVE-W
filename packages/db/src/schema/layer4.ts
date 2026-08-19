@@ -1,0 +1,120 @@
+import { pgTable, varchar, text, timestamp, uuid, integer, boolean, index } from 'drizzle-orm/pg-core';
+
+export const baggageCustody = pgTable('baggage_custody', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  baggageId: uuid('baggage_id').notNull(),
+  flightId: uuid('flight_id'),
+  custodianName: varchar('custodian_name', { length: 100 }).notNull(),
+  custodianType: varchar('custodian_type', { length: 50 }).notNull(),
+  previousCustodian: varchar('previous_custodian', { length: 100 }),
+  previousCustodianType: varchar('previous_custodian_type', { length: 50 }),
+  location: varchar('location', { length: 255 }),
+  airportCode: varchar('airport_code', { length: 3 }),
+  transferredAt: timestamp('transferred_at', { withTimezone: true }).notNull().defaultNow(),
+  transferredBy: uuid('transferred_by'),
+  handoverId: uuid('handover_id'),
+  notes: text('notes'),
+  metadata: text('metadata'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({
+  baggageIdx: index('idx_custody_baggage').on(t.baggageId),
+}));
+
+export const baggageStateProjections = pgTable('baggage_state_projections', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  baggageId: uuid('baggage_id').notNull().unique(),
+  currentState: varchar('current_state', { length: 50 }).notNull().default('created'),
+  currentLocation: varchar('current_location', { length: 255 }),
+  currentAirportCode: varchar('current_airport_code', { length: 3 }),
+  currentCustodian: varchar('current_custodian', { length: 100 }),
+  currentCustodianType: varchar('current_custodian_type', { length: 50 }),
+  lastEventId: uuid('last_event_id'),
+  lastEventType: varchar('last_event_type', { length: 50 }),
+  lastEventAt: timestamp('last_event_at', { withTimezone: true }),
+  expectedNextEvent: varchar('expected_next_event', { length: 50 }),
+  expectedNextEventAt: timestamp('expected_next_event_at', { withTimezone: true }),
+  sequenceNumber: integer('sequence_number').notNull().default(0),
+  lastEventHash: varchar('last_event_hash', { length: 128 }),
+  eventCount: integer('event_count').notNull().default(0),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const expectedEvents = pgTable('expected_events', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  baggageId: uuid('baggage_id').notNull(),
+  flightId: uuid('flight_id'),
+  journeyId: uuid('journey_id'),
+  expectedType: varchar('expected_type', { length: 50 }).notNull(),
+  expectedAt: timestamp('expected_at', { withTimezone: true }).notNull(),
+  expectedLocation: varchar('expected_location', { length: 255 }),
+  expectedAirportCode: varchar('expected_airport_code', { length: 3 }),
+  status: varchar('status', { length: 30 }).notNull().default('expected'),
+  fulfilledByEventId: uuid('fulfilled_by_event_id'),
+  fulfilledAt: timestamp('fulfilled_at', { withTimezone: true }),
+  expiredAt: timestamp('expired_at', { withTimezone: true }),
+  notes: text('notes'),
+  metadata: text('metadata'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({
+  baggageIdx: index('idx_expected_events_baggage').on(t.baggageId),
+  statusIdx: index('idx_expected_events_status').on(t.status),
+}));
+
+export const operationalExceptions = pgTable('operational_exceptions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  baggageId: uuid('baggage_id'),
+  flightId: uuid('flight_id'),
+  journeyId: uuid('journey_id'),
+  exceptionType: varchar('exception_type', { length: 50 }).notNull(),
+  severity: varchar('severity', { length: 20 }).notNull().default('warning'),
+  description: text('description').notNull(),
+  expectedEventId: uuid('expected_event_id'),
+  actualEventId: uuid('actual_event_id'),
+  location: varchar('location', { length: 255 }),
+  airportCode: varchar('airport_code', { length: 3 }),
+  resolved: boolean('resolved').notNull().default(false),
+  resolvedAt: timestamp('resolved_at', { withTimezone: true }),
+  resolvedBy: uuid('resolved_by'),
+  resolution: text('resolution'),
+  caseId: uuid('case_id'),
+  metadata: text('metadata'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({
+  baggageIdx: index('idx_exceptions_baggage').on(t.baggageId),
+  typeIdx: index('idx_exceptions_type').on(t.exceptionType),
+  resolvedIdx: index('idx_exceptions_resolved').on(t.resolved),
+  caseIdx: index('idx_exceptions_case').on(t.caseId),
+}));
+
+export const eventOutbox = pgTable('event_outbox', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  eventType: varchar('event_type', { length: 100 }).notNull(),
+  aggregateType: varchar('aggregate_type', { length: 50 }).notNull(),
+  aggregateId: uuid('aggregate_id').notNull(),
+  payload: text('payload').notNull(),
+  status: varchar('status', { length: 30 }).notNull().default('pending'),
+  attempts: integer('attempts').notNull().default(0),
+  maxAttempts: integer('max_attempts').notNull().default(5),
+  lastError: text('last_error'),
+  nextRetryAt: timestamp('next_retry_at', { withTimezone: true }),
+  sentAt: timestamp('sent_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({
+  statusIdx: index('idx_outbox_status').on(t.status),
+}));
+
+export const journeySegments = pgTable('journey_segments', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  journeyId: uuid('journey_id').notNull(),
+  flightId: uuid('flight_id').notNull(),
+  segmentOrder: integer('segment_order').notNull().default(0),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});

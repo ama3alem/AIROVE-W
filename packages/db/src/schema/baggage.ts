@@ -1,0 +1,27 @@
+import { pgTable, varchar, text, timestamp, uuid, integer } from 'drizzle-orm/pg-core';
+
+export const baggage = pgTable('baggage', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  orgId: uuid('org_id').notNull(),
+  tagNumber: varchar('tag_number', { length: 50 }).notNull(),
+  journeyId: uuid('journey_id'),
+  flightId: uuid('flight_id'),
+  passengerName: varchar('passenger_name', { length: 255 }),
+  passengerReference: varchar('passenger_reference', { length: 100 }),
+  originAirportId: uuid('origin_airport_id'),
+  destinationAirportId: uuid('destination_airport_id'),
+  currentLocation: varchar('current_location', { length: 255 }),
+  currentState: varchar('current_state', { length: 50 }).notNull().default('registered'),
+  currentCustodian: varchar('current_custodian', { length: 100 }),
+  currentCustodianType: varchar('current_custodian_type', { length: 50 }),
+  lastEventId: uuid('last_event_id'),
+  expectedNextEvent: varchar('expected_next_event', { length: 50 }),
+  weight: integer('weight'),
+  dimensions: varchar('dimensions', { length: 50 }),
+  bagType: varchar('bag_type', { length: 50 }),
+  priority: varchar('priority', { length: 20 }).default('normal'),
+  status: varchar('status', { length: 20 }).notNull().default('active'),
+  metadata: text('metadata'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
