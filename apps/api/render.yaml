@@ -3,8 +3,8 @@ services:
     name: airove-api
     runtime: node
     plan: starter
-    buildCommand: npm install && npm run build --filter=@airove/api
-    startCommand: npm run start --filter=@airove/api
+    buildCommand: npm install && npx turbo build --filter=@airove/api
+    startCommand: node apps/api/dist/index.js
     healthCheckPath: /api/health/live
     envVars:
       - key: NODE_ENV
