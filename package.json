@@ -30,6 +30,7 @@
     "node": "22"
   },
   "dependencies": {
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "drizzle-orm": "^0.33.0"
   }
 }
