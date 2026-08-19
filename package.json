@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "airove",
   "private": true,
   "workspaces": [
@@ -27,46 +26,10 @@
     "typescript": "^5.6.0"
   },
   "packageManager": "npm@10.9.0",
-    "engines": {
-      "node": "22"
-    },
+  "engines": {
+    "node": "22"
+  },
   "dependencies": {
     "recharts": "^3.10.1"
   }
 }
-=======
-    "name":  "airove",
-    "private":  true,
-    "workspaces":  [
-                       "apps/*",
-                       "packages/*"
-                   ],
-    "scripts":  {
-                    "dev":  "turbo dev",
-                    "build":  "turbo build",
-                    "lint":  "turbo lint",
-                    "typecheck":  "turbo typecheck",
-                    "test":  "turbo test",
-                    "format":  "prettier --write \"**/*.{ts,tsx,md,json}\"",
-                    "format:check":  "prettier --check \"**/*.{ts,tsx,md,json}\"",
-                    "db:generate":  "turbo db:generate",
-                    "db:migrate":  "turbo db:migrate",
-                    "db:push":  "turbo db:push",
-                    "db:studio":  "turbo db:studio"
-                },
-    "devDependencies":  {
-                            "@types/node":  "^22.0.0",
-                            "eslint":  "^9.0.0",
-                            "prettier":  "^3.3.0",
-                            "turbo":  "^2.1.0",
-                            "typescript":  "^5.6.0"
-                        },
-    "packageManager":  "npm@10.9.0",
-    "dependencies":  {
-                         "recharts":  "^3.10.1"
-                     },
-    "engines":  {
-                    "node":  "\u003e=20.19.0"
-                }
-}
->>>>>>> 1c36c3c3ae40da4a95b6ec01c2e82ffa61bae568
