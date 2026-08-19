@@ -26,9 +26,9 @@
     "typescript": "^5.6.0"
   },
   "packageManager": "npm@10.9.0",
-  "engines": {
-    "node": ">=20.18.0"
-  },
+    "engines": {
+      "node": "22"
+    },
   "dependencies": {
     "recharts": "^3.10.1"
   }
