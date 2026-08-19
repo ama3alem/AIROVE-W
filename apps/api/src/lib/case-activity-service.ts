@@ -1,7 +1,7 @@
 import { db, caseActivities, caseComments } from '@airove/db';
 import { eq, and, sql, desc, asc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 
 const logger = pino({ name: 'layer5-case-activity' });
 

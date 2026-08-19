@@ -1,13 +1,13 @@
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
-import { aiGuardrails } from './ai-guardrails';
-import { aiProviderService } from './ai-provider-service';
-import { aiConversationService } from './ai-conversation-service';
-import { aiToolRegistry } from './ai-tool-registry';
-import { aiToolAuthorization } from './ai-tool-authorization';
-import { aiEvidenceService } from './ai-evidence-service';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
+import { aiGuardrails } from './ai-guardrails.js';
+import { aiProviderService } from './ai-provider-service.js';
+import { aiConversationService } from './ai-conversation-service.js';
+import { aiToolRegistry } from './ai-tool-registry.js';
+import { aiToolAuthorization } from './ai-tool-authorization.js';
+import { aiEvidenceService } from './ai-evidence-service.js';
 import type { AIResponse, AIEvidence } from '@airove/shared';
-import type { ToolExecutionContext } from './ai-tool-registry';
+import type { ToolExecutionContext } from './ai-tool-registry.js';
 
 export interface AssistantRequest {
   message: string;

@@ -10,11 +10,11 @@ import {
   paginationSchema,
 } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { caseService } from '../lib/case-service';
-import { caseActivityService } from '../lib/case-activity-service';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { caseService } from '../lib/case-service.js';
+import { caseActivityService } from '../lib/case-activity-service.js';
+import type { AppEnv } from '../types/env.js';
 
 export const caseRoutes = new Hono<AppEnv>();
 

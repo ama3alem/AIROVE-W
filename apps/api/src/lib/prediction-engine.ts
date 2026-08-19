@@ -1,6 +1,6 @@
 import { db, baggageStateProjections, cases, caseSla, expectedEvents, recoveryPlans } from '@airove/db';
 import { eq, and, sql } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export type PredictionCategory =
   | 'TRANSFER_FAILURE' | 'SLA_MISS' | 'BAGGAGE_DELAY' | 'BAGGAGE_MISDIRECTION'

@@ -65,7 +65,7 @@ import type {
   AlertSeverity,
   AlertStatus,
   ExportFormat,
-} from '../constants';
+} from '../constants/index.js';
 
 export type BaggageState = (typeof BAGGAGE_STATES)[number];
 export type BaggagePriority = (typeof BAGGAGE_PRIORITIES)[number];
@@ -447,7 +447,7 @@ export type {
   AIActionProposal,
   AIApproval,
   AIInteraction,
-} from './ai-interface';
+} from './ai-interface.js';
 
 export {
   aiConversationStatusEnum,
@@ -468,7 +468,7 @@ export {
   createMessageSchema,
   createActionProposalSchema,
   approvalRequestSchema,
-} from './ai-interface';
+} from './ai-interface.js';
 
 export type EventSource = (typeof EVENT_SOURCES)[number];
 export type ActorType = (typeof ACTOR_TYPES)[number];

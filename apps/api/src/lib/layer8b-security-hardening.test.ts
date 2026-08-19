@@ -19,7 +19,7 @@ import {
 
 describe('PHASE 2: AI Tool Security Audit', () => {
   it('all 10 tools are READ_ONLY with READ classification', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const tools = aiToolRegistry.listTools();
     expect(tools).toHaveLength(10);
     for (const tool of tools) {
@@ -31,8 +31,8 @@ describe('PHASE 2: AI Tool Security Audit', () => {
   });
 
   it('every tool requires authentication (orgId + userId)', async () => {
-    const { aiToolAuthorization } = await import('../lib/ai-tool-authorization');
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolAuthorization } = await import('../lib/ai-tool-authorization.js');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const tool = aiToolRegistry.getTool('get_baggage')!;
     const result = await aiToolAuthorization.authorizeTool(tool, {
       orgId: '',
@@ -45,14 +45,14 @@ describe('PHASE 2: AI Tool Security Audit', () => {
   });
 
   it('every tool enforces tenant scope', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     for (const tool of aiToolRegistry.listTools()) {
       expect(tool.requiresTenantScope).toBe(true);
     }
   });
 
   it('every tool validates input via Zod schema', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const invalid = aiToolRegistry.validateToolInput('get_baggage', { baggageId: 'not-uuid' });
     expect(invalid.valid).toBe(false);
     const valid = aiToolRegistry.validateToolInput('get_baggage', {
@@ -62,13 +62,13 @@ describe('PHASE 2: AI Tool Security Audit', () => {
   });
 
   it('tool authorization rejects unknown tools', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const unknown = aiToolRegistry.getTool('nonexistent_tool');
     expect(unknown).toBeUndefined();
   });
 
   it('tools cannot mutate state (all classified READ)', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const writeTools = aiToolRegistry.listToolsByClassification('WRITE');
     expect(writeTools).toHaveLength(0);
   });
@@ -76,7 +76,7 @@ describe('PHASE 2: AI Tool Security Audit', () => {
 
 describe('PHASE 3: Prompt Injection Defense', () => {
   it('detects "ignore previous" pattern', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -88,7 +88,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('detects "system prompt" pattern', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -99,7 +99,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('detects "act as" pattern', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -110,7 +110,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('detects "override instructions" pattern', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -121,7 +121,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('allows normal messages', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -132,7 +132,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('blocks oversized input (>10KB)', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const largeMessage = 'x'.repeat(11 * 1024);
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
@@ -145,7 +145,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('redacts email PII', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -157,7 +157,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('redacts phone PII', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -169,7 +169,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('rejects missing tenant context', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: '',
       userId: 'user-1',
@@ -181,7 +181,7 @@ describe('PHASE 3: Prompt Injection Defense', () => {
   });
 
   it('rejects missing user context', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: '',
@@ -289,8 +289,8 @@ describe('PHASE 5: Hallucination Control', () => {
   });
 
   it('assistant response includes mode label for deterministic fallback', async () => {
-    const { aiAssistantService } = await import('../lib/ai-assistant-service');
-    const health = (await import('../lib/ai-provider-service')).aiProviderService.health();
+    const { aiAssistantService } = await import('../lib/ai-assistant-service.js');
+    const health = (await import('../lib/ai-provider-service.js')).aiProviderService.health();
     const activeProviders = health.providers.filter((p) => p.isActive && p.type !== 'deterministic');
     if (activeProviders.length === 0) {
       expect(true).toBe(true);
@@ -309,7 +309,7 @@ describe('PHASE 6: Confidence Model', () => {
   });
 
   it('deterministic fallback explicitly labels itself', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const result = await aiProviderService.infer({
       capability: 'TEXT_GENERATION',
       input: { text: 'test' },
@@ -359,7 +359,7 @@ describe('PHASE 7: Action Proposal Security', () => {
 
 describe('PHASE 9: Execution Boundary', () => {
   it('executeAction is a stub that does NOT mutate database', async () => {
-    const { aiActionService } = await import('../lib/ai-action-service');
+    const { aiActionService } = await import('../lib/ai-action-service.js');
     const result = await (aiActionService as any).executeAction(
       'ASSIGN_CASE', 'case', 'case-123', 'org-1',
     );
@@ -472,7 +472,7 @@ describe('PHASE 14: Conversation Security', () => {
   });
 
   it('session creation requires orgId and userId', async () => {
-    const { aiConversationService } = await import('../lib/ai-conversation-service');
+    const { aiConversationService } = await import('../lib/ai-conversation-service.js');
     try {
       await aiConversationService.createSession({
         orgId: '',
@@ -488,7 +488,7 @@ describe('PHASE 14: Conversation Security', () => {
 
 describe('PHASE 15: PII / Sensitive Data', () => {
   it('PII redaction works recursively in nested objects', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -503,7 +503,7 @@ describe('PHASE 15: PII / Sensitive Data', () => {
   });
 
   it('SSN is redacted', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -516,7 +516,7 @@ describe('PHASE 15: PII / Sensitive Data', () => {
 
 describe('PHASE 16: Provider Failure', () => {
   it('deterministic fallback activates when no external provider is available', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const result = await aiProviderService.infer({
       capability: 'TEXT_GENERATION',
       input: { text: 'test' },
@@ -528,7 +528,7 @@ describe('PHASE 16: Provider Failure', () => {
   });
 
   it('provider health exposes safe operational status only', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const health = aiProviderService.health();
     expect(health.status).toBe('ok');
     expect(health.timestamp).toBeDefined();
@@ -544,14 +544,14 @@ describe('PHASE 16: Provider Failure', () => {
 
 describe('PHASE 17: Provider Abstraction', () => {
   it('multiple provider types are supported', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const providers = aiProviderService.listProviders();
     const types = providers.map((p) => p.type);
     expect(types).toContain('deterministic');
   });
 
   it('no hardcoded paid provider requirement', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const health = aiProviderService.health();
     const activeNonDeterministic = health.providers.filter(
       (p) => p.isActive && p.type !== 'deterministic',
@@ -562,7 +562,7 @@ describe('PHASE 17: Provider Abstraction', () => {
 
 describe('PHASE 18: Cost Control', () => {
   it('rate limiting is enforced per tenant', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     for (let i = 0; i < 100; i++) {
       await aiGuardrails.validate({
         tenantId: 'org-rate-limit-test',
@@ -582,7 +582,7 @@ describe('PHASE 18: Cost Control', () => {
   });
 
   it('input size is limited to 10KB', async () => {
-    const { aiGuardrails } = await import('../lib/ai-guardrails');
+    const { aiGuardrails } = await import('../lib/ai-guardrails.js');
     const result = await aiGuardrails.validate({
       tenantId: 'org-1',
       userId: 'user-1',
@@ -595,7 +595,7 @@ describe('PHASE 18: Cost Control', () => {
 
 describe('PHASE 21: API Response Safety', () => {
   it('provider health does not expose API keys', async () => {
-    const { aiProviderService } = await import('../lib/ai-provider-service');
+    const { aiProviderService } = await import('../lib/ai-provider-service.js');
     const health = aiProviderService.health();
     const healthStr = JSON.stringify(health);
     expect(healthStr).not.toContain('sk-');
@@ -795,8 +795,8 @@ describe('PHASE 29: No Redesign Rule', () => {
         `C:\\Users\\g_kpc\\OneDrive\\Desktop\\AIROVE WEBSITE\\apps\\api\\src\\lib\\${file}`,
         'utf-8',
       );
-      expect(content).not.toContain("from '../lib/auth'");
-      expect(content).not.toContain("from '../middleware/auth'");
+      expect(content).not.toContain("from '../lib/auth.js'");
+      expect(content).not.toContain("from '../middleware/auth.js'");
       expect(content).not.toContain('auth.api.');
     }
   });
@@ -872,7 +872,7 @@ describe('PHASE 13: Evidence Grounding', () => {
 
 describe('PHASE 19: Audit', () => {
   it('ai-audit-service logs all intelligence types', async () => {
-    const { aiAuditService } = await import('../lib/ai-audit-service');
+    const { aiAuditService } = await import('../lib/ai-audit-service.js');
     expect(typeof aiAuditService.logPrediction).toBe('function');
     expect(typeof aiAuditService.logRiskAssessment).toBe('function');
     expect(typeof aiAuditService.logAnomalyDetection).toBe('function');
@@ -883,7 +883,7 @@ describe('PHASE 19: Audit', () => {
   });
 
   it('tool authorization logs authorized and denied', async () => {
-    const { aiToolAuthorization } = await import('../lib/ai-tool-authorization');
+    const { aiToolAuthorization } = await import('../lib/ai-tool-authorization.js');
     expect(typeof aiToolAuthorization.authorizeTool).toBe('function');
   });
 });

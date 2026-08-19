@@ -22,7 +22,7 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { riskIntelligenceService } from './risk-intelligence-service';
+import { riskIntelligenceService } from './risk-intelligence-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

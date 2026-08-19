@@ -10,15 +10,15 @@ import {
   replayEventSchema,
 } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { webhookAuthMiddleware, type WebhookContext } from '../middleware/webhook-auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { integrationService } from '../lib/integration-service';
-import { normalizationEngine, type RawInboundEvent } from '../lib/normalization';
-import { integrationEventQueue } from '../workers/integration-event-worker';
-import { replayEvent } from '../workers/integration-event-worker';
-import { auditLog } from '../lib/audit-logger';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { webhookAuthMiddleware, type WebhookContext } from '../middleware/webhook-auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { integrationService } from '../lib/integration-service.js';
+import { normalizationEngine, type RawInboundEvent } from '../lib/normalization.js';
+import { integrationEventQueue } from '../workers/integration-event-worker.js';
+import { replayEvent } from '../workers/integration-event-worker.js';
+import { auditLog } from '../lib/audit-logger.js';
+import type { AppEnv } from '../types/env.js';
 
 const integrationRoutes = new Hono<AppEnv>();
 

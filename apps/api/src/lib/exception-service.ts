@@ -1,7 +1,7 @@
 import { db, operationalExceptions } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
 import type { OperationalExceptionType, ExceptionSeverity } from '@airove/shared';
 
 export interface CreateExceptionInput {

@@ -12,7 +12,7 @@ import {
 import type {
   AnalyticsTimeRange,
 } from '@airove/shared';
-import { resolveTimeRangeBounds } from './metric-engine';
+import { resolveTimeRangeBounds } from './metric-engine.js';
 
 export interface AggregationResult {
   metric: string;

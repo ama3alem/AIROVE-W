@@ -1,21 +1,21 @@
-export { organizations } from './organizations';
-export { users, orgMembers } from './users';
-export { airports } from './airports';
-export { airlines } from './airlines';
-export { flights } from './flights';
-export { journeys } from './journeys';
-export { baggage } from './baggage';
-export { baggageEvents } from './events';
-export { cases } from './cases';
-export { tasks } from './tasks';
-export { handovers } from './handovers';
-export { auditLogs } from './audit-logs';
-export { integrations, integrationEvents, entityMappings, outboundDeliveries } from './integrations';
-export { notifications } from './notifications';
-export { roles, permissions, rolePermissions, membershipRoles } from './roles';
-export { invitations } from './invitations';
-export { serviceIdentities } from './service-identities';
-export { orgRelationships, accessPolicies } from './org-relationships';
+export { organizations } from './organizations.js';
+export { users, orgMembers } from './users.js';
+export { airports } from './airports.js';
+export { airlines } from './airlines.js';
+export { flights } from './flights.js';
+export { journeys } from './journeys.js';
+export { baggage } from './baggage.js';
+export { baggageEvents } from './events.js';
+export { cases } from './cases.js';
+export { tasks } from './tasks.js';
+export { handovers } from './handovers.js';
+export { auditLogs } from './audit-logs.js';
+export { integrations, integrationEvents, entityMappings, outboundDeliveries } from './integrations.js';
+export { notifications } from './notifications.js';
+export { roles, permissions, rolePermissions, membershipRoles } from './roles.js';
+export { invitations } from './invitations.js';
+export { serviceIdentities } from './service-identities.js';
+export { orgRelationships, accessPolicies } from './org-relationships.js';
 export {
   baggageCustody,
   baggageStateProjections,
@@ -23,7 +23,7 @@ export {
   operationalExceptions,
   eventOutbox,
   journeySegments,
-} from './layer4';
+} from './layer4.js';
 
 export {
   caseActivities,
@@ -33,7 +33,7 @@ export {
   caseEscalations,
   workflowDefinitions,
   workflowRules,
-} from './layer5';
+} from './layer5.js';
 
 export {
   recoveryPlans,
@@ -46,7 +46,7 @@ export {
   recoveryProviders,
   providerServices,
   recoveryProviderAssignments,
-} from './layer6';
+} from './layer6.js';
 
 export {
   analyticsDefinitions,
@@ -55,7 +55,7 @@ export {
   analyticsAlerts,
   analyticsSavedViews,
   analyticsExports,
-} from './layer7';
+} from './layer7.js';
 
 // Layer 8: AI Intelligence Engine
 export {
@@ -65,7 +65,7 @@ export {
   anomalies,
   rootCauseAnalyses,
   recommendations,
-} from './layer8';
+} from './layer8.js';
 
 // Layer 8B: AI Operational Interface & Controlled Action Engine
 export {
@@ -75,4 +75,4 @@ export {
   aiActionProposals,
   aiActionApprovals,
   aiInteractions,
-} from './layer8b';
+} from './layer8b.js';

@@ -16,7 +16,7 @@ import type {
   ProviderAnalyticsSummary,
   AnalyticsTimeRange,
 } from '@airove/shared';
-import { resolveTimeRangeBounds } from './metric-engine';
+import { resolveTimeRangeBounds } from './metric-engine.js';
 
 export const baggageAnalyticsService = {
   async getAgingDistribution(

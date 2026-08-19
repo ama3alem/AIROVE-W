@@ -3,10 +3,10 @@ import { db, users, orgMembers, membershipRoles } from '@airove/db';
 import { eq, and } from 'drizzle-orm';
 import { updateMembershipSchema, paginationSchema } from '@airove/shared';
 import { PERMISSIONS, LAYER2_ROLES } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { auditLog } from '../lib/audit-logger';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { auditLog } from '../lib/audit-logger.js';
+import type { AppEnv } from '../types/env.js';
 
 export const userManagementRoutes = new Hono<AppEnv>();
 

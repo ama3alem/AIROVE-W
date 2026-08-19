@@ -1,8 +1,8 @@
 import { Worker, Queue } from 'bullmq';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { metricEngineService } from '../lib/metric-engine';
-import { aggregationService } from '../lib/aggregation-service';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { metricEngineService } from '../lib/metric-engine.js';
+import { aggregationService } from '../lib/aggregation-service.js';
 import type { AnalyticsGranularity, AnalyticsTimeRange } from '@airove/shared';
 
 function parseRedisUrl(url: string) {

@@ -6,7 +6,7 @@ import type {
   AnalyticsTimeRange,
   AnalyticsGranularity,
 } from '@airove/shared';
-import { metricEngineService, resolveTimeRangeBounds } from './metric-engine';
+import { metricEngineService, resolveTimeRangeBounds } from './metric-engine.js';
 
 export const trendEngineService = {
   async getTrend(

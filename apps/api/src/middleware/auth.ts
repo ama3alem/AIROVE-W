@@ -1,8 +1,8 @@
 import type { MiddlewareHandler } from 'hono';
-import { auth } from '../lib/auth';
-import { authorizationService, type AuthorizationContext } from '../lib/authorization';
-import { logger } from '../lib/logger';
-import type { AppEnv } from '../types/env';
+import { auth } from '../lib/auth.js';
+import { authorizationService, type AuthorizationContext } from '../lib/authorization.js';
+import { logger } from '../lib/logger.js';
+import type { AppEnv } from '../types/env.js';
 
 export const authMiddleware: MiddlewareHandler = async (c, next) => {
   const session = await auth.api.getSession({

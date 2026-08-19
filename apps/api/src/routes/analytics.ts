@@ -1,19 +1,19 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
 import {
   metricEngineService,
   resolveTimeRangeBounds,
-} from '../lib/metric-engine';
-import { aggregationService } from '../lib/aggregation-service';
-import { trendEngineService } from '../lib/trend-engine';
+} from '../lib/metric-engine.js';
+import { aggregationService } from '../lib/aggregation-service.js';
+import { trendEngineService } from '../lib/trend-engine.js';
 import {
   baggageAnalyticsService,
   caseAnalyticsService,
   recoveryAnalyticsService,
   routeAnalyticsService,
   providerAnalyticsService,
-} from '../lib/domain-analytics';
+} from '../lib/domain-analytics.js';
 import type { AnalyticsTimeRange, AnalyticsGranularity } from '@airove/shared';
 
 const analyticsRoutes = new Hono<AppEnv>();

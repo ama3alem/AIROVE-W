@@ -1,6 +1,6 @@
 import { db, baggage, baggageEvents, cases, tasks, caseSla, recoveryPlans } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export interface EvidenceItem {
   sourceLayer: string;

@@ -2,7 +2,7 @@ import { db, recoveryRouteOptions, recoveryRouteSegments, recoveryPlans, flights
 import { eq, and, sql, asc } from 'drizzle-orm';
 import pino from 'pino';
 import { GRAPH_TRAVERSAL_LIMITS, ROUTE_SEGMENT_MODES } from '@airove/shared';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 import type { RecoveryRouteSegment, RecoveryRouteOption, RecoveryRiskLevel } from '@airove/shared';
 
 const logger = pino({ name: 'layer6-routing-engine' });

@@ -1,8 +1,8 @@
 import { db, baggageCustody, baggage, baggageStateProjections } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
-import { eventService } from './event-service';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
+import { eventService } from './event-service.js';
 import type { CustodyPartyType, OperationalEventType } from '@airove/shared';
 
 export interface CreateCustodyInput {

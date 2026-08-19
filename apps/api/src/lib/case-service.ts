@@ -1,8 +1,8 @@
 import { db, cases } from '@airove/db';
 import { eq, and, sql, asc, desc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
-import { validateCaseTransition, isValidCaseTransition, isReopenableStatus } from './case-state-machine';
+import { auditLog } from './audit-logger.js';
+import { validateCaseTransition, isValidCaseTransition, isReopenableStatus } from './case-state-machine.js';
 
 const logger = pino({ name: 'layer5-case-service' });
 

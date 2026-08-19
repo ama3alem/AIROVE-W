@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
 import {
   createAlertRuleSchema,
   updateAlertRuleSchema,
 } from '@airove/shared';
-import { alertEngineService } from '../lib/alert-engine';
-import { auditLog } from '../lib/audit-logger';
+import { alertEngineService } from '../lib/alert-engine.js';
+import { auditLog } from '../lib/audit-logger.js';
 
 const alertsRoutes = new Hono<AppEnv>();
 

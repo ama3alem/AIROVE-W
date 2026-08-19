@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
 import {
   createSavedViewSchema,
   updateSavedViewSchema,
 } from '@airove/shared';
-import { savedViewsService } from '../lib/saved-views-service';
-import { auditLog } from '../lib/audit-logger';
+import { savedViewsService } from '../lib/saved-views-service.js';
+import { auditLog } from '../lib/audit-logger.js';
 
 const savedViewsRoutes = new Hono<AppEnv>();
 

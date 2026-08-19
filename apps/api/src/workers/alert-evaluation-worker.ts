@@ -1,7 +1,7 @@
 import { Worker, Queue } from 'bullmq';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { alertEngineService } from '../lib/alert-engine';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { alertEngineService } from '../lib/alert-engine.js';
 
 function parseRedisUrl(url: string) {
   const parsed = new URL(url);

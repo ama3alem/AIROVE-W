@@ -2,12 +2,12 @@ import { Hono } from 'hono';
 import { db, baggage, journeys, journeySegments, flights, baggageStateProjections } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { eventService } from '../lib/event-service';
-import { custodyService } from '../lib/custody-service';
-import { exceptionService } from '../lib/exception-service';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { eventService } from '../lib/event-service.js';
+import { custodyService } from '../lib/custody-service.js';
+import { exceptionService } from '../lib/exception-service.js';
+import type { AppEnv } from '../types/env.js';
 
 export const baggageDetailRoutes = new Hono<AppEnv>();
 

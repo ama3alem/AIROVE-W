@@ -1,7 +1,7 @@
 import { db, slaPolicies, caseSla, cases } from '@airove/db';
 import { eq, and, sql, desc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 
 const logger = pino({ name: 'layer5-sla-engine' });
 

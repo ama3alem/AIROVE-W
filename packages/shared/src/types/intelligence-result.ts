@@ -4,7 +4,7 @@ import type {
   ConfidenceLevel,
   SeverityLevel,
   IntelligenceResult,
-} from './index';
+} from './index.js';
 
 export type {
   IntelligenceType,

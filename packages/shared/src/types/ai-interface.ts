@@ -3,7 +3,7 @@ import type {
   ConfidenceLevel,
   SeverityLevel,
   EvidenceReference,
-} from './index';
+} from './index.js';
 
 // ─── Layer 8B: AI Operational Interface & Controlled Action Engine ──────────
 

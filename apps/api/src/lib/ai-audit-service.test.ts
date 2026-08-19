@@ -5,7 +5,7 @@ const mockAuditLog = vi.fn().mockResolvedValue(undefined);
 vi.mock('./audit-logger', () => ({ auditLog: (...args: unknown[]) => mockAuditLog(...args) }));
 vi.mock('./logger', () => ({ logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() } }));
 
-import { AIAuditService } from './ai-audit-service';
+import { AIAuditService } from './ai-audit-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

@@ -1,8 +1,8 @@
 import { db, tasks } from '@airove/db';
 import { eq, and, sql, desc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
-import { validateTaskTransition } from './case-state-machine';
+import { auditLog } from './audit-logger.js';
+import { validateTaskTransition } from './case-state-machine.js';
 
 const logger = pino({ name: 'layer5-task-engine' });
 

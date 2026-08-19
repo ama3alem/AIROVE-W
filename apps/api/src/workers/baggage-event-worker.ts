@@ -1,12 +1,12 @@
 import { Worker, Queue } from 'bullmq';
 import { db, baggageEvents, baggage } from '@airove/db';
 import { eq } from 'drizzle-orm';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { eventService } from '../lib/event-service';
-import { baggageStateMachine } from '../lib/state-machine';
-import { expectedEventsEngine } from '../lib/expected-events';
-import { exceptionService } from '../lib/exception-service';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { eventService } from '../lib/event-service.js';
+import { baggageStateMachine } from '../lib/state-machine.js';
+import { expectedEventsEngine } from '../lib/expected-events.js';
+import { exceptionService } from '../lib/exception-service.js';
 import type { OperationalEventType } from '@airove/shared';
 
 function parseRedisUrl(url: string) {

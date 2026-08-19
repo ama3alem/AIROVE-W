@@ -31,7 +31,7 @@ vi.mock('@airove/db', () => ({
   recoveryProviders: {},
 }));
 
-import { AIFeatureService } from './ai-feature-service';
+import { AIFeatureService } from './ai-feature-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

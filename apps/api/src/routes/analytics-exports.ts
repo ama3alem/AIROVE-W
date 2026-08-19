@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
 import { createExportSchema } from '@airove/shared';
-import { exportService } from '../lib/export-service';
-import { auditLog } from '../lib/audit-logger';
+import { exportService } from '../lib/export-service.js';
+import { auditLog } from '../lib/audit-logger.js';
 
 const exportsRoutes = new Hono<AppEnv>();
 

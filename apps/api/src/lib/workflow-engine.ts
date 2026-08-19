@@ -2,11 +2,11 @@ import { db, workflowDefinitions, workflowRules, cases, slaPolicies } from '@air
 import { eq, and, sql, asc, desc } from 'drizzle-orm';
 import pino from 'pino';
 import { EXCEPTION_TO_CASE_TYPE_MAP } from '@airove/shared';
-import { auditLog } from './audit-logger';
-import { caseService } from './case-service';
-import { taskService } from './task-engine';
-import { slaService } from './sla-engine';
-import { caseActivityService } from './case-activity-service';
+import { auditLog } from './audit-logger.js';
+import { caseService } from './case-service.js';
+import { taskService } from './task-engine.js';
+import { slaService } from './sla-engine.js';
+import { caseActivityService } from './case-activity-service.js';
 
 const logger = pino({ name: 'layer5-workflow-engine' });
 

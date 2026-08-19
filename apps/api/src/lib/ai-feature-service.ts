@@ -11,7 +11,7 @@ import {
   recoveryProviders,
 } from '@airove/db';
 import { eq, and, sql, desc, asc } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export interface FeatureSet {
   subjectType: string;

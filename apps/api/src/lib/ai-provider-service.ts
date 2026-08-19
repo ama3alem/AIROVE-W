@@ -1,4 +1,4 @@
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export type AICapability = 'TEXT_GENERATION' | 'CLASSIFICATION' | 'EMBEDDING' | 'STRUCTURED_OUTPUT';
 

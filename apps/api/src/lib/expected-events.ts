@@ -1,6 +1,6 @@
 import { db, expectedEvents, flights, journeys, baggage } from '@airove/db';
 import { eq, and, asc, desc, lt } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 import type { OperationalEventType, ExpectedEventStatus } from '@airove/shared';
 
 export interface GenerateExpectedEventsInput {

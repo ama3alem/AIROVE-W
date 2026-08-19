@@ -7,9 +7,9 @@ import {
 } from '@airove/db';
 import { eq, and, asc, desc, sql } from 'drizzle-orm';
 import { createHash } from 'crypto';
-import { logger } from './logger';
-import { baggageStateMachine } from './state-machine';
-import { auditLog } from './audit-logger';
+import { logger } from './logger.js';
+import { baggageStateMachine } from './state-machine.js';
+import { auditLog } from './audit-logger.js';
 import type { BaggageLifecycleState, OperationalEventType, EventSource, ActorType, BaggageTimelineEntry, EventIntegrityHash, ReplayResult } from '@airove/shared';
 
 export interface CreateOperationalEventInput {

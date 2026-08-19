@@ -1,10 +1,10 @@
 import { Worker, Queue } from 'bullmq';
 import { db, operationalExceptions } from '@airove/db';
 import { eq } from 'drizzle-orm';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { workflowEngine } from '../lib/workflow-engine';
-import { exceptionService, registerPipelineTrigger } from '../lib/exception-service';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { workflowEngine } from '../lib/workflow-engine.js';
+import { exceptionService, registerPipelineTrigger } from '../lib/exception-service.js';
 
 function parseRedisUrl(url: string) {
   const parsed = new URL(url);

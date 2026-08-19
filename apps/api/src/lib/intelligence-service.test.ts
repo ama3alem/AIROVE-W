@@ -49,7 +49,7 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { intelligenceService } from './intelligence-service';
+import { intelligenceService } from './intelligence-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -80,7 +80,7 @@ describe('IntelligenceService', () => {
     });
 
     it('returns blocked response when guardrails reject', async () => {
-      const { aiGuardrails } = await import('./ai-guardrails');
+      const { aiGuardrails } = await import('./ai-guardrails.js');
       (aiGuardrails.validate as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         allowed: false,
         reason: 'Rate limit exceeded',
@@ -125,7 +125,7 @@ describe('IntelligenceService', () => {
     });
 
     it('includes warnings from guardrails', async () => {
-      const { aiGuardrails } = await import('./ai-guardrails');
+      const { aiGuardrails } = await import('./ai-guardrails.js');
       (aiGuardrails.validate as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         allowed: true,
         reason: undefined,

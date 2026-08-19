@@ -1,8 +1,8 @@
-import { logger } from './logger';
-import type { PredictionResult } from './prediction-engine';
-import type { RiskAssessmentResult } from './risk-intelligence-service';
-import type { RootCauseResult } from './root-cause-service';
-import type { AnomalyResult } from './anomaly-detection-service';
+import { logger } from './logger.js';
+import type { PredictionResult } from './prediction-engine.js';
+import type { RiskAssessmentResult } from './risk-intelligence-service.js';
+import type { RootCauseResult } from './root-cause-service.js';
+import type { AnomalyResult } from './anomaly-detection-service.js';
 
 export type RecommendationPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 

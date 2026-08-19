@@ -1,7 +1,7 @@
 import { db, recoveryExecutions, recoveryExecutionSteps, recoveryPlans } from '@airove/db';
 import { eq, and, asc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 
 const logger = pino({ name: 'layer6-recovery-execution' });
 

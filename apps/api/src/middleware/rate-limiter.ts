@@ -1,5 +1,5 @@
 import type { MiddlewareHandler } from 'hono';
-import { redis } from '../lib/redis';
+import { redis } from '../lib/redis.js';
 
 interface RateLimiterOptions {
   windowMs?: number;

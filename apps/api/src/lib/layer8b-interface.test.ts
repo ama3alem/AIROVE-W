@@ -215,7 +215,7 @@ describe('Layer 8B: Shared Types & Schemas', () => {
 
 describe('Layer 8B: AI Tool Registry', () => {
   it('exports aiToolRegistry with correct methods', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     expect(aiToolRegistry).toBeDefined();
     expect(typeof aiToolRegistry.listTools).toBe('function');
     expect(typeof aiToolRegistry.getTool).toBe('function');
@@ -223,7 +223,7 @@ describe('Layer 8B: AI Tool Registry', () => {
   });
 
   it('lists 10 read-only tools', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const tools = aiToolRegistry.listTools();
     expect(tools).toHaveLength(10);
     for (const tool of tools) {
@@ -234,7 +234,7 @@ describe('Layer 8B: AI Tool Registry', () => {
   });
 
   it('retrieves tool by name', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const tool = aiToolRegistry.getTool('get_baggage');
     expect(tool).toBeDefined();
     expect(tool?.name).toBe('get_baggage');
@@ -242,13 +242,13 @@ describe('Layer 8B: AI Tool Registry', () => {
   });
 
   it('returns undefined for unknown tool', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const tool = aiToolRegistry.getTool('nonexistent_tool');
     expect(tool).toBeUndefined();
   });
 
   it('validates correct tool input', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const result = aiToolRegistry.validateToolInput('get_baggage', {
       baggageId: '550e8400-e29b-41d4-a716-446655440000',
     });
@@ -256,7 +256,7 @@ describe('Layer 8B: AI Tool Registry', () => {
   });
 
   it('rejects invalid tool input', async () => {
-    const { aiToolRegistry } = await import('../lib/ai-tool-registry');
+    const { aiToolRegistry } = await import('../lib/ai-tool-registry.js');
     const result = aiToolRegistry.validateToolInput('get_baggage', {
       baggageId: 'not-a-uuid',
     });

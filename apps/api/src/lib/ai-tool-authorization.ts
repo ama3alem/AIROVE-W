@@ -1,6 +1,6 @@
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
-import type { AIToolDefinition, ToolExecutionContext } from './ai-tool-registry';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
+import type { AIToolDefinition, ToolExecutionContext } from './ai-tool-registry.js';
 
 export interface ToolAuthorizationResult {
   authorized: boolean;

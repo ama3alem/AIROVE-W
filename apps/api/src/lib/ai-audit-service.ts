@@ -1,5 +1,5 @@
-import { auditLog } from './audit-logger';
-import { logger } from './logger';
+import { auditLog } from './audit-logger.js';
+import { logger } from './logger.js';
 
 export interface AIAuditEntry {
   orgId: string;

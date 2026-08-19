@@ -1,9 +1,9 @@
 import { Worker, Queue } from 'bullmq';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { slaService } from '../lib/sla-engine';
-import { escalationService } from '../lib/escalation-engine';
-import { caseActivityService } from '../lib/case-activity-service';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { slaService } from '../lib/sla-engine.js';
+import { escalationService } from '../lib/escalation-engine.js';
+import { caseActivityService } from '../lib/case-activity-service.js';
 
 function parseRedisUrl(url: string) {
   const parsed = new URL(url);

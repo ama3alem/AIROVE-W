@@ -1,12 +1,12 @@
-import { logger } from './logger';
-import { aiGuardrails } from './ai-guardrails';
-import { aiProviderService } from './ai-provider-service';
-import { aiAuditService } from './ai-audit-service';
-import { predictionEngine, type PredictionRequest, type PredictionResult } from './prediction-engine';
-import { riskIntelligenceService, type RiskAssessmentResult } from './risk-intelligence-service';
-import { anomalyDetectionService, type AnomalyResult } from './anomaly-detection-service';
-import { rootCauseService, type RootCauseResult } from './root-cause-service';
-import { recommendationEngine, type RecommendationResult } from './recommendation-engine';
+import { logger } from './logger.js';
+import { aiGuardrails } from './ai-guardrails.js';
+import { aiProviderService } from './ai-provider-service.js';
+import { aiAuditService } from './ai-audit-service.js';
+import { predictionEngine, type PredictionRequest, type PredictionResult } from './prediction-engine.js';
+import { riskIntelligenceService, type RiskAssessmentResult } from './risk-intelligence-service.js';
+import { anomalyDetectionService, type AnomalyResult } from './anomaly-detection-service.js';
+import { rootCauseService, type RootCauseResult } from './root-cause-service.js';
+import { recommendationEngine, type RecommendationResult } from './recommendation-engine.js';
 
 export interface IntelligenceRequest {
   orgId: string;

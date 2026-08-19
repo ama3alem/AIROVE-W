@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 vi.mock('./logger', () => ({ logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() } }));
 vi.mock('./audit-logger', () => ({ auditLog: vi.fn().mockResolvedValue(undefined) }));
 
-import { aiGuardrails } from './ai-guardrails';
+import { aiGuardrails } from './ai-guardrails.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

@@ -2,9 +2,9 @@ import type { MiddlewareHandler } from 'hono';
 import { createHmac, timingSafeEqual } from 'crypto';
 import { db, integrations } from '@airove/db';
 import { eq } from 'drizzle-orm';
-import { logger } from '../lib/logger';
+import { logger } from '../lib/logger.js';
 import { MAX_WEBHOOK_PAYLOAD_SIZE, WEBHOOK_TIMESTAMP_TOLERANCE_SECONDS } from '@airove/shared';
-import type { AppEnv } from '../types/env';
+import type { AppEnv } from '../types/env.js';
 
 export interface WebhookContext {
   integrationId: string;

@@ -1,6 +1,6 @@
 import { DEFAULT_EVENT_TYPE_MAP, CANONICAL_EVENT_TYPES } from '@airove/shared';
 import type { NormalizedEvent, EventProvenance, IntegrationMapping, MappingField } from '@airove/shared';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export interface RawInboundEvent {
   integrationId: string;

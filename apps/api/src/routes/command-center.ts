@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
-import { commandCenterService } from '../lib/command-center-service';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
+import { commandCenterService } from '../lib/command-center-service.js';
 
 const commandCenterRoutes = new Hono<AppEnv>();
 

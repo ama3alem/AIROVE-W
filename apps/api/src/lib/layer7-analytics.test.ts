@@ -30,11 +30,11 @@ import {
 // ── resolveTimeRangeBounds ──────────────────────────────────────────────────────
 
 describe('resolveTimeRangeBounds', () => {
-  let resolveTimeRangeBounds: typeof import('./metric-engine').resolveTimeRangeBounds;
+  let resolveTimeRangeBounds: typeof import('./metric-engine.js').resolveTimeRangeBounds;
 
   beforeEach(async () => {
     vi.resetModules();
-    const mod = await import('./metric-engine');
+    const mod = await import('./metric-engine.js');
     resolveTimeRangeBounds = mod.resolveTimeRangeBounds;
   });
 
@@ -392,79 +392,79 @@ describe('Layer 7 Zod Schemas', () => {
 describe('Layer 7 Security', () => {
   describe('Cross-tenant isolation — all services require orgId', () => {
     it('alertEngineService.listAlertRules requires orgId param', async () => {
-      const { alertEngineService } = await import('./alert-engine');
+      const { alertEngineService } = await import('./alert-engine.js');
       expect(typeof alertEngineService.listAlertRules).toBe('function');
       expect(alertEngineService.listAlertRules.length).toBeGreaterThanOrEqual(1);
     });
 
     it('alertEngineService.listAlerts requires orgId param', async () => {
-      const { alertEngineService } = await import('./alert-engine');
+      const { alertEngineService } = await import('./alert-engine.js');
       expect(typeof alertEngineService.listAlerts).toBe('function');
       expect(alertEngineService.listAlerts.length).toBeGreaterThanOrEqual(1);
     });
 
     it('alertEngineService.getAlert requires orgId param', async () => {
-      const { alertEngineService } = await import('./alert-engine');
+      const { alertEngineService } = await import('./alert-engine.js');
       expect(typeof alertEngineService.getAlert).toBe('function');
       expect(alertEngineService.getAlert.length).toBeGreaterThanOrEqual(2);
     });
 
     it('alertEngineService.evaluateRules requires orgId param', async () => {
-      const { alertEngineService } = await import('./alert-engine');
+      const { alertEngineService } = await import('./alert-engine.js');
       expect(typeof alertEngineService.evaluateRules).toBe('function');
       expect(alertEngineService.evaluateRules.length).toBe(1);
     });
 
     it('exportService.listExports requires orgId param', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       expect(typeof exportService.listExports).toBe('function');
       expect(exportService.listExports.length).toBeGreaterThanOrEqual(1);
     });
 
     it('exportService.getExport requires orgId param', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       expect(typeof exportService.getExport).toBe('function');
       expect(exportService.getExport.length).toBeGreaterThanOrEqual(2);
     });
 
     it('exportService.generateExportData requires orgId param', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       expect(typeof exportService.generateExportData).toBe('function');
       expect(exportService.generateExportData.length).toBeGreaterThanOrEqual(2);
     });
 
     it('metricEngineService.getMetricDefinition requires orgId param', async () => {
-      const { metricEngineService } = await import('./metric-engine');
+      const { metricEngineService } = await import('./metric-engine.js');
       expect(typeof metricEngineService.getMetricDefinition).toBe('function');
       expect(metricEngineService.getMetricDefinition.length).toBe(2);
     });
 
     it('metricEngineService.getMetricValue requires orgId param', async () => {
-      const { metricEngineService } = await import('./metric-engine');
+      const { metricEngineService } = await import('./metric-engine.js');
       expect(typeof metricEngineService.getMetricValue).toBe('function');
       expect(metricEngineService.getMetricValue.length).toBeGreaterThanOrEqual(2);
     });
 
     it('metricEngineService.getSnapshots requires orgId param', async () => {
-      const { metricEngineService } = await import('./metric-engine');
+      const { metricEngineService } = await import('./metric-engine.js');
       expect(typeof metricEngineService.getSnapshots).toBe('function');
       expect(metricEngineService.getSnapshots.length).toBeGreaterThanOrEqual(2);
     });
 
     it('trendEngineService.getTrend requires orgId param', async () => {
-      const { trendEngineService } = await import('./trend-engine');
+      const { trendEngineService } = await import('./trend-engine.js');
       expect(typeof trendEngineService.getTrend).toBe('function');
       expect(trendEngineService.getTrend.length).toBeGreaterThanOrEqual(2);
     });
 
     it('commandCenterService.getOverview requires orgId param', async () => {
-      const { commandCenterService } = await import('./command-center-service');
+      const { commandCenterService } = await import('./command-center-service.js');
       expect(typeof commandCenterService.getOverview).toBe('function');
       expect(commandCenterService.getOverview.length).toBeGreaterThanOrEqual(1);
     });
 
     it('commandCenterService.getAirportHealth requires orgId param', async () => {
-      const { commandCenterService } = await import('./command-center-service');
+      const { commandCenterService } = await import('./command-center-service.js');
       expect(typeof commandCenterService.getAirportHealth).toBe('function');
       expect(commandCenterService.getAirportHealth.length).toBe(1);
     });
@@ -639,28 +639,28 @@ describe('Layer 7 Security', () => {
 
   describe('Export safety — formatExportData', () => {
     it('CSV formatter escapes commas in values', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const data = [{ name: 'John, Doe', value: 42 }];
       const csv = exportService.formatExportData(data, 'csv');
       expect(csv).toContain('"John, Doe"');
     });
 
     it('CSV formatter escapes double quotes', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const data = [{ name: 'Say "hello"', value: 1 }];
       const csv = exportService.formatExportData(data, 'csv');
       expect(csv).toContain('"Say ""hello"""');
     });
 
     it('CSV formatter escapes newlines', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const data = [{ name: 'Line1\nLine2', value: 1 }];
       const csv = exportService.formatExportData(data, 'csv');
       expect(csv).toContain('"Line1\nLine2"');
     });
 
     it('JSON formatter produces valid JSON', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const data = [{ key: 'value', nested: { a: 1 } }];
       const json = exportService.formatExportData(data, 'json');
       const parsed = JSON.parse(json);
@@ -668,13 +668,13 @@ describe('Layer 7 Security', () => {
     });
 
     it('empty data produces empty string for CSV', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const csv = exportService.formatExportData([], 'csv');
       expect(csv).toBe('');
     });
 
     it('empty data produces empty array for JSON', async () => {
-      const { exportService } = await import('./export-service');
+      const { exportService } = await import('./export-service.js');
       const json = exportService.formatExportData([], 'json');
       expect(json).toBe('[]');
     });

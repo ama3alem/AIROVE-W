@@ -23,8 +23,8 @@ vi.mock('@airove/db', () => ({
 
 vi.mock('./audit-logger', () => ({ auditLog: mockAuditLog }));
 
-import { SLAService } from './sla-engine';
-import { EscalationService, ESCALATION_LEVELS } from './escalation-engine';
+import { SLAService } from './sla-engine.js';
+import { EscalationService, ESCALATION_LEVELS } from './escalation-engine.js';
 
 function chainableReturn(row: Record<string, unknown>) {
   const returning = vi.fn().mockResolvedValue([row]);

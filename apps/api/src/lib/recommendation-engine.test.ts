@@ -21,11 +21,11 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { recommendationEngine } from './recommendation-engine';
-import type { PredictionResult } from './prediction-engine';
-import type { RiskAssessmentResult } from './risk-intelligence-service';
-import type { RootCauseResult } from './root-cause-service';
-import type { AnomalyResult } from './anomaly-detection-service';
+import { recommendationEngine } from './recommendation-engine.js';
+import type { PredictionResult } from './prediction-engine.js';
+import type { RiskAssessmentResult } from './risk-intelligence-service.js';
+import type { RootCauseResult } from './root-cause-service.js';
+import type { AnomalyResult } from './anomaly-detection-service.js';
 
 const now = new Date();
 

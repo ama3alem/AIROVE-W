@@ -1,6 +1,6 @@
 import { ZodError } from 'zod';
-import { logger } from '../lib/logger';
-import type { AppEnv } from '../types/env';
+import { logger } from '../lib/logger.js';
+import type { AppEnv } from '../types/env.js';
 import type { ErrorHandler } from 'hono';
 
 export const errorHandler: ErrorHandler<AppEnv> = (err, c) => {

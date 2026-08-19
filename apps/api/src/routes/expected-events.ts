@@ -3,12 +3,12 @@ import { db, baggage } from '@airove/db';
 import { eq, and } from 'drizzle-orm';
 import { createExpectedEventSchema, paginationSchema } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { expectedEventsEngine } from '../lib/expected-events';
-import { exceptionService } from '../lib/exception-service';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { expectedEventsEngine } from '../lib/expected-events.js';
+import { exceptionService } from '../lib/exception-service.js';
 import type { OperationalEventType } from '@airove/shared';
-import type { AppEnv } from '../types/env';
+import type { AppEnv } from '../types/env.js';
 
 export const expectedEventRoutes = new Hono<AppEnv>();
 

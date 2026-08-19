@@ -1,5 +1,5 @@
-import type { AuthorizationContext } from '../lib/authorization';
-import type { WebhookContext } from '../middleware/webhook-auth';
+import type { AuthorizationContext } from '../lib/authorization.js';
+import type { WebhookContext } from '../middleware/webhook-auth.js';
 
 export type AppEnv = {
   Variables: {

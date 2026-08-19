@@ -9,7 +9,7 @@ import {
   tasks,
 } from '@airove/db';
 import { eq, and, sql, desc } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export type RiskSubjectType = 'baggage' | 'case' | 'recovery_plan' | 'airport';
 

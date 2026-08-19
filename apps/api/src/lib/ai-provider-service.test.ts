@@ -17,7 +17,7 @@ vi.mock('@airove/db', () => ({
   aiProviders: { id: 'id', orgId: 'org_id' },
 }));
 
-import { AIProviderService } from './ai-provider-service';
+import { AIProviderService } from './ai-provider-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

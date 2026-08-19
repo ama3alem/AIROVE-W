@@ -1,7 +1,7 @@
 import { db, users, orgMembers, roles, permissions, rolePermissions, membershipRoles } from '@airove/db';
 import { eq, and, inArray } from 'drizzle-orm';
 import { LAYER2_ROLES, ORG_ROLE_PERMISSIONS } from '@airove/shared';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 
 export interface AuthorizationContext {
   userId: string;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { RouteScoring } from './route-scoring';
+import { RouteScoring } from './route-scoring.js';
 import { ROUTE_SCORING_WEIGHTS } from '@airove/shared';
 
 const scoring = new RouteScoring();

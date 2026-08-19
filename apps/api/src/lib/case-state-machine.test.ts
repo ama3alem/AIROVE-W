@@ -7,7 +7,7 @@ import {
   isReopenableStatus,
   validateTaskTransition,
   isValidTaskTransition,
-} from './case-state-machine';
+} from './case-state-machine.js';
 
 describe('validateCaseTransition', () => {
   it('allows valid transition open -> triaged', () => {

@@ -1,10 +1,10 @@
 import { Hono } from 'hono';
 import { z } from 'zod';
-import { generateUploadUrl, generateDownloadUrl } from '../lib/storage';
-import { authMiddleware } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
+import { generateUploadUrl, generateDownloadUrl } from '../lib/storage.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
 import { nanoid } from 'nanoid';
-import type { AppEnv } from '../types/env';
+import type { AppEnv } from '../types/env.js';
 
 export const uploadRoutes = new Hono<AppEnv>();
 

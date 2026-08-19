@@ -3,10 +3,10 @@ import { db, journeys, journeySegments, flights, baggage } from '@airove/db';
 import { eq, and, asc } from 'drizzle-orm';
 import { createJourneySchema, paginationSchema } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { auditLog } from '../lib/audit-logger';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { auditLog } from '../lib/audit-logger.js';
+import type { AppEnv } from '../types/env.js';
 
 export const journeyRoutes = new Hono<AppEnv>();
 

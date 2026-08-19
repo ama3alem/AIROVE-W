@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
 import { sql } from 'drizzle-orm';
 import { db } from '@airove/db';
-import { redis } from '../lib/redis';
-import type { AppEnv } from '../types/env';
+import { redis } from '../lib/redis.js';
+import type { AppEnv } from '../types/env.js';
 
 export const healthRoutes = new Hono<AppEnv>();
 

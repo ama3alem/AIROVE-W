@@ -3,13 +3,13 @@ import { db, baggage } from '@airove/db';
 import { eq, and } from 'drizzle-orm';
 import { createOperationalEventSchema, correctEventSchema, paginationSchema } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { eventService } from '../lib/event-service';
-import { custodyService } from '../lib/custody-service';
-import { expectedEventsEngine } from '../lib/expected-events';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { eventService } from '../lib/event-service.js';
+import { custodyService } from '../lib/custody-service.js';
+import { expectedEventsEngine } from '../lib/expected-events.js';
 import type { OperationalEventType } from '@airove/shared';
-import type { AppEnv } from '../types/env';
+import type { AppEnv } from '../types/env.js';
 
 export const operationalEventRoutes = new Hono<AppEnv>();
 

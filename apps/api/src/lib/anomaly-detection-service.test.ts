@@ -21,7 +21,7 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { anomalyDetectionService } from './anomaly-detection-service';
+import { anomalyDetectionService } from './anomaly-detection-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

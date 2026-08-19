@@ -22,7 +22,7 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { rootCauseService } from './root-cause-service';
+import { rootCauseService } from './root-cause-service.js';
 
 beforeEach(() => {
   vi.clearAllMocks();

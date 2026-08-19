@@ -7,8 +7,8 @@ import {
 } from '@airove/db';
 import { eq, and, sql, desc } from 'drizzle-orm';
 import { createHash, randomBytes, createHmac } from 'crypto';
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
 import type { IntegrationMapping, IntegrationHealth, NormalizedEvent } from '@airove/shared';
 
 export interface CreateIntegrationInput {

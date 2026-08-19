@@ -1,5 +1,5 @@
 import type { MiddlewareHandler } from 'hono';
-import { logger as pinoLoggerFn } from '../lib/logger';
+import { logger as pinoLoggerFn } from '../lib/logger.js';
 
 export const pinoLogger = (): MiddlewareHandler => {
   return async (c, next) => {

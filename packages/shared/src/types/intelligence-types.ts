@@ -7,7 +7,7 @@ import type {
   EvidenceReference,
   IntelligenceMetadata,
   IntelligenceResult,
-} from './index';
+} from './index.js';
 
 export type {
   IntelligenceType,

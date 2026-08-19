@@ -1,12 +1,12 @@
 import { Worker, Queue } from 'bullmq';
 import { db, integrationEvents, integrations } from '@airove/db';
 import { eq, and } from 'drizzle-orm';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { normalizationEngine, type RawInboundEvent } from '../lib/normalization';
-import { integrationService } from '../lib/integration-service';
-import { eventService } from '../lib/event-service';
-import { expectedEventsEngine } from '../lib/expected-events';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { normalizationEngine, type RawInboundEvent } from '../lib/normalization.js';
+import { integrationService } from '../lib/integration-service.js';
+import { eventService } from '../lib/event-service.js';
+import { expectedEventsEngine } from '../lib/expected-events.js';
 import type { IntegrationMapping } from '@airove/shared';
 
 function parseRedisUrl(url: string) {

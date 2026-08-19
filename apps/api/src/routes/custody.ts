@@ -3,10 +3,10 @@ import { db, baggageCustody } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
 import { createCustodySchema, paginationSchema } from '@airove/shared';
 import { PERMISSIONS } from '@airove/shared';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import { rateLimiter } from '../middleware/rate-limiter';
-import { custodyService } from '../lib/custody-service';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import { rateLimiter } from '../middleware/rate-limiter.js';
+import { custodyService } from '../lib/custody-service.js';
+import type { AppEnv } from '../types/env.js';
 
 export const custodyRoutes = new Hono<AppEnv>();
 

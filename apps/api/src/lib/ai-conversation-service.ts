@@ -1,6 +1,6 @@
 import { db, aiConversationSessions, aiMessages } from '@airove/db';
 import { eq, and, desc } from 'drizzle-orm';
-import { logger } from './logger';
+import { logger } from './logger.js';
 
 export interface CreateSessionParams {
   orgId: string;

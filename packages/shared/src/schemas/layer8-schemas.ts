@@ -4,7 +4,7 @@ import type {
   SeverityLevel,
   IntelligenceStatus,
   EvidenceReference,
-} from '../types/intelligence-types';
+} from '../types/intelligence-types.js';
 
 const intelligenceTypeEnum = z.enum(['PREDICTION', 'ANOMALY', 'RISK', 'ROOT_CAUSE', 'RECOMMENDATION', 'ASSISTANT_RESPONSE']);
 const intelligenceStatusEnum = z.enum(['PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', 'EXPIRED']);

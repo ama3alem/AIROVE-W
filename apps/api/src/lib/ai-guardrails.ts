@@ -1,5 +1,5 @@
-import { logger } from './logger';
-import { auditLog } from './audit-logger';
+import { logger } from './logger.js';
+import { auditLog } from './audit-logger.js';
 
 export interface GuardrailInput {
   tenantId: string;

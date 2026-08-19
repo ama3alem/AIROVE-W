@@ -11,7 +11,7 @@ import {
 } from '@airove/db';
 import type { AnalyticsExport, ExportFormat } from '@airove/shared';
 import { EXPORT_MAX_ROWS } from '@airove/shared';
-import { resolveTimeRangeBounds } from './metric-engine';
+import { resolveTimeRangeBounds } from './metric-engine.js';
 import type { AnalyticsTimeRange } from '@airove/shared';
 
 function mapExport(r: typeof analyticsExports.$inferSelect): AnalyticsExport {

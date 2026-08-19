@@ -1,5 +1,5 @@
-export * from './schema';
-import { db } from './db';
+export * from './schema/index.js';
+import { db } from './db.js';
 export { db };
 
 export type Database = typeof db;

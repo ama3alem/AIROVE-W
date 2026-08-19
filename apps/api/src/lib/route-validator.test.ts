@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { RouteValidator } from './route-validator';
+import { RouteValidator } from './route-validator.js';
 import { GRAPH_TRAVERSAL_LIMITS } from '@airove/shared';
 import type { RecoveryRouteSegment } from '@airove/shared';
 

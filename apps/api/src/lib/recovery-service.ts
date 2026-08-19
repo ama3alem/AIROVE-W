@@ -1,7 +1,7 @@
 import { db, recoveryPlans, recoveryRouteOptions, recoveryRouteSegments, recoveryPlanVersions } from '@airove/db';
 import { eq, and, sql, asc, desc } from 'drizzle-orm';
 import pino from 'pino';
-import { auditLog } from './audit-logger';
+import { auditLog } from './audit-logger.js';
 import { RECOVERY_PLAN_TRANSITIONS } from '@airove/shared';
 
 const logger = pino({ name: 'layer6-recovery-service' });

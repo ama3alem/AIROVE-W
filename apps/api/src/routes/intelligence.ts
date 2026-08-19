@@ -1,18 +1,18 @@
 import { Hono } from 'hono';
-import { authMiddleware, requirePermission } from '../middleware/auth';
-import type { AppEnv } from '../types/env';
+import { authMiddleware, requirePermission } from '../middleware/auth.js';
+import type { AppEnv } from '../types/env.js';
 import { PERMISSIONS } from '@airove/shared';
-import { predictionEngine } from '../lib/prediction-engine';
-import { riskIntelligenceService } from '../lib/risk-intelligence-service';
-import { anomalyDetectionService } from '../lib/anomaly-detection-service';
-import { rootCauseService } from '../lib/root-cause-service';
-import { recommendationEngine } from '../lib/recommendation-engine';
-import { intelligenceService } from '../lib/intelligence-service';
-import { aiProviderService } from '../lib/ai-provider-service';
-import { aiAssistantService } from '../lib/ai-assistant-service';
-import { aiConversationService } from '../lib/ai-conversation-service';
-import { aiActionService } from '../lib/ai-action-service';
-import { aiToolRegistry } from '../lib/ai-tool-registry';
+import { predictionEngine } from '../lib/prediction-engine.js';
+import { riskIntelligenceService } from '../lib/risk-intelligence-service.js';
+import { anomalyDetectionService } from '../lib/anomaly-detection-service.js';
+import { rootCauseService } from '../lib/root-cause-service.js';
+import { recommendationEngine } from '../lib/recommendation-engine.js';
+import { intelligenceService } from '../lib/intelligence-service.js';
+import { aiProviderService } from '../lib/ai-provider-service.js';
+import { aiAssistantService } from '../lib/ai-assistant-service.js';
+import { aiConversationService } from '../lib/ai-conversation-service.js';
+import { aiActionService } from '../lib/ai-action-service.js';
+import { aiToolRegistry } from '../lib/ai-tool-registry.js';
 import {
   assistantRequestSchema,
   createSessionSchema,

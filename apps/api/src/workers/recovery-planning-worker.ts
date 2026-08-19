@@ -1,9 +1,9 @@
 import { Worker, Queue } from 'bullmq';
-import { logger } from '../lib/logger';
-import { env } from '../lib/env';
-import { routingEngine } from '../lib/routing-engine';
-import { routeScoring } from '../lib/route-scoring';
-import { recoveryService } from '../lib/recovery-service';
+import { logger } from '../lib/logger.js';
+import { env } from '../lib/env.js';
+import { routingEngine } from '../lib/routing-engine.js';
+import { routeScoring } from '../lib/route-scoring.js';
+import { recoveryService } from '../lib/recovery-service.js';
 
 function parseRedisUrl(url: string) {
   const parsed = new URL(url);

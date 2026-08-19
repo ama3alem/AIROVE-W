@@ -21,7 +21,7 @@ vi.mock('@airove/db', () => ({
   tasks: { orgId: 'org_id', caseId: 'case_id' },
 }));
 
-import { predictionEngine } from './prediction-engine';
+import { predictionEngine } from './prediction-engine.js';
 
 beforeEach(() => {
   vi.clearAllMocks();
